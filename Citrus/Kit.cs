@@ -127,7 +127,7 @@ public static class Kit
             return OSType.FreeBSD;
         }
 
-        throw new Exception("位置系统");
+        throw new Exception("未知系统");
     }
 
     public static ResourceManager GetResource(this Type baseType,string baseName)
