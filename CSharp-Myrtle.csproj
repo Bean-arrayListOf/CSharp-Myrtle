@@ -9,6 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Citrus\MapDBResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MapDBResource.resx</DependentUpon>
+    </Compile>
     <Compile Update="MasterResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -17,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Citrus\MapDBResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MapDBResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="MasterResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MasterResource.Designer.cs</LastGenOutput>

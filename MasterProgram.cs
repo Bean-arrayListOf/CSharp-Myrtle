@@ -1,4 +1,10 @@
 ﻿using CSharp_Myrtle.Citrus;
+using CSharp_Myrtle.Citrus.LibCPlatform;
+
+using System.Data.SqlClient;
+using System.Data.SQLite;
+using System.Data.SqlTypes;
+using System.Reflection;
 
 namespace CSharp_Myrtle
 {
@@ -6,8 +12,8 @@ namespace CSharp_Myrtle
     {
         static void Main(string[] args)
         {
-            var res = typeof(MasterProgram).GetResource("CSharp_Myrtle.MasterResource");
-            res.GetString("ProjectName").OutLine();
+            using var mapdb = new MapDB("C:\\Users\\Hsdnm\\DataGripProjects\\identifier.sqlite");
+            mapdb.Remove("1","1").OutLine();
         }
     }
 }

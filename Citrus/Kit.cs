@@ -39,17 +39,7 @@ public static class Kit
 
     public static String ReadText(this Stream stream)
     {
-        using (var baos = new MemoryStream())
-        {
-            var bytes = new byte[1024];
-            var n = 0;
-            while((n = stream.Read(bytes)) > 0)
-            {
-                baos.Write(bytes, 0, n);
-            }
-            baos.Flush();
-            return baos.ToArray().EncString();
-        }
+        return stream.ReadAllByte().EncString();
     }
 
     public static List<string> ReadLines(this Stream stream)
@@ -61,6 +51,21 @@ public static class Kit
             lines.Add(line);
         }
         return lines;
+    }
+
+    public static byte[] ReadAllByte(this Stream stream)
+    {
+        using (var baos = new MemoryStream())
+        {
+            var bytes = new byte[1024];
+            var n = 0;
+            while ((n = stream.Read(bytes)) > 0)
+            {
+                baos.Write(bytes, 0, n);
+            }
+            baos.Flush();
+            return baos.ToArray();
+        }
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
