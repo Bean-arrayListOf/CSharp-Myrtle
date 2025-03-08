@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Data.Entity;
-using System.Data.SqlClient;
-using System.Data.SQLite;
-using System.Linq;
+﻿using System.Data.SQLite;
 using System.Reflection;
 using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharp_Myrtle.Citrus
 {
     class MapDB : IDisposable
     {
-        private bool _Disposed = true;
-        private readonly SQLiteConnection _Connect;
-        private readonly string _IndexTableName;
-        private readonly string _IndexTableDefaultBDB;
-        private readonly ResourceManager _Resource = Assembly.GetExecutingAssembly().GetResource("CSharp_Myrtle.Citrus.MapDBResource");
+        private bool _disposed = true;
+        private readonly SQLiteConnection _connect;
+        private readonly string _indexTableName;
+        private readonly string _indexTableDefaultBDB;
+        private readonly ResourceManager _resource = Assembly.GetExecutingAssembly().GetResource("CSharp_Myrtle.Citrus.MapDBResource");
 
         public MapDB(string baseFile)
         {
@@ -27,13 +19,13 @@ namespace CSharp_Myrtle.Citrus
                 SQLiteConnection.CreateFile(baseFile);
             }
 
-            this._Connect = new SQLiteConnection($"Data Source={baseFile};");
-            this._Connect.Open();
+            this._connect = new SQLiteConnection($"Data Source={baseFile};");
+            this._connect.Open();
 
-            this._IndexTableName = _Resource.GetString("_IndexTableName")!;
-            this._IndexTableDefaultBDB = _Resource.GetString("_IndexTableDefaultBDB")!;
+            this._indexTableName = _resource.GetString("_indexTableName")!;
+            this._indexTableDefaultBDB = _resource.GetString("_indexTableDefaultBDB")!;
 
-            using var command = new SQLiteCommand("PRAGMA journal_mode=WAL;", _Connect);
+            using var command = new SQLiteCommand("PRAGMA journal_mode=WAL;", _connect);
             command.ExecuteNonQuery();
 
             NeoIndexTable();
@@ -41,8 +33,8 @@ namespace CSharp_Myrtle.Citrus
 
         public int NeoIndexTable()
         {
-            var sql = String.Format(_Resource.GetString("NeoIndexTable_sql")!, _IndexTableName);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("NeoIndexTable_sql")!, _indexTableName);
+            using var command = new SQLiteCommand(sql, _connect);
             return command.ExecuteNonQuery();
         }
 
@@ -58,8 +50,8 @@ namespace CSharp_Myrtle.Citrus
                 throw new IndexOutOfRangeException("key 长度不得超过500");
             }
 
-            var sql = String.Format(_Resource.GetString("InsertIndexTable_sql")!,_IndexTableName);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("InsertIndexTable_sql")!,_indexTableName);
+            using var command = new SQLiteCommand(sql, _connect);
             command.Parameters.AddWithValue("@A_DATABASE",db);
             command.Parameters.AddWithValue("@A_KEY", key);
             command.Parameters.AddWithValue("@A_DATA_TABLE", data_table);
@@ -69,8 +61,8 @@ namespace CSharp_Myrtle.Citrus
 
         public int InsertDataType(string data_table, List<byte[]> datas)
         {
-            var sql = String.Format(_Resource.GetString("InsertDataType_sql")!,data_table);
-            using var command = new SQLiteCommand(sql,_Connect);
+            var sql = String.Format(_resource.GetString("InsertDataType_sql")!,data_table);
+            using var command = new SQLiteCommand(sql,_connect);
             var exitCode = 0;
             foreach (byte[] i in datas)
             {
@@ -87,16 +79,16 @@ namespace CSharp_Myrtle.Citrus
 
         public int InsertDataType(string data_table, byte[] data)
         {
-            var sql = String.Format(_Resource.GetString("InsertDataType_sql")!, data_table);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("InsertDataType_sql")!, data_table);
+            using var command = new SQLiteCommand(sql, _connect);
             command.Parameters.AddWithValue("@B_DATA", data);
             return command.ExecuteNonQuery();
         }
 
         public bool ContainsIndexTable(string db,string key)
         {
-            var sql = String.Format(_Resource.GetString("ContainsIndexTable_sql")!, _IndexTableName);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("ContainsIndexTable_sql")!, _indexTableName);
+            using var command = new SQLiteCommand(sql, _connect);
             command.Parameters.AddWithValue("@A_DATABASE", db);
             command.Parameters.AddWithValue("@A_KEY", key);
             return command.ExecuteScalar().ToInt() != 0;
@@ -106,23 +98,23 @@ namespace CSharp_Myrtle.Citrus
         public string NeoDataTable()
         {
             var baseTable = GetUUIDv3();
-            var sql = String.Format(_Resource.GetString("NeoDataTable_sql")!,baseTable);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("NeoDataTable_sql")!,baseTable);
+            using var command = new SQLiteCommand(sql, _connect);
             command.ExecuteNonQuery();
             return baseTable;
         }
 
         public int RemoveDataTable(string data_type)
         {
-            var sql = String.Format(_Resource.GetString("RemoveDataTable_sql")!,data_type);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("RemoveDataTable_sql")!,data_type);
+            using var command = new SQLiteCommand(sql, _connect);
             return command.ExecuteNonQuery();
         }
 
         public int RemoveIndex(string db,string key)
         {
-            var sql = String.Format(_Resource.GetString("RemoveIndex_sql")!, _IndexTableName);
-            using var command = new SQLiteCommand(sql,_Connect);
+            var sql = String.Format(_resource.GetString("RemoveIndex_sql")!, _indexTableName);
+            using var command = new SQLiteCommand(sql,_connect);
             command.Parameters.AddWithValue("@A_DATABASE", db);
             command.Parameters.AddWithValue("@A_KEY", key);
             return command.ExecuteNonQuery();
@@ -130,8 +122,8 @@ namespace CSharp_Myrtle.Citrus
 
         public int UpdateIndexDataTable(string db,string key,string data_table)
         {
-            var sql = String.Format(_Resource.GetString("UpdateIndexDataTable_sql")!,_IndexTableName);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("UpdateIndexDataTable_sql")!,_indexTableName);
+            using var command = new SQLiteCommand(sql, _connect);
             command.Parameters.AddWithValue("@A_DATABASE", db);
             command.Parameters.AddWithValue("@A_KEY", key);
             command.Parameters.AddWithValue("@A_DATA_TABLE", data_table);
@@ -140,8 +132,8 @@ namespace CSharp_Myrtle.Citrus
 
         public string GetDataTable(string db,string key)
         {
-            var sql = String.Format(_Resource.GetString("GetDataTable_sql")!, _IndexTableName);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("GetDataTable_sql")!, _indexTableName);
+            using var command = new SQLiteCommand(sql, _connect);
             command.Parameters.AddWithValue("@A_DATABASE", db);
             command.Parameters.AddWithValue("@A_KEY", key);
             using var read = command.ExecuteReader();
@@ -194,8 +186,8 @@ namespace CSharp_Myrtle.Citrus
 
             var dataTable = GetDataTable(db, key);
 
-            var sql = String.Format(_Resource.GetString("Get_sql")!,dataTable);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("Get_sql")!,dataTable);
+            using var command = new SQLiteCommand(sql, _connect);
             using var read = command.ExecuteReader();
             read.Read();
             return read.GetStream(1).ReadAllByte();
@@ -223,8 +215,8 @@ namespace CSharp_Myrtle.Citrus
 
             var dataTable = GetDataTable(db, key);
 
-            var sql = String.Format(_Resource.GetString("Get_sql")!, dataTable);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("Get_sql")!, dataTable);
+            using var command = new SQLiteCommand(sql, _connect);
             using var read = command.ExecuteReader();
             var list = new List<byte[]>();
             while (read.Read())
@@ -236,8 +228,8 @@ namespace CSharp_Myrtle.Citrus
 
         public MapDBType GetType(string db,string key)
         {
-            var sql = String.Format(_Resource.GetString("GetType_sql")!, _IndexTableName);
-            using var command = new SQLiteCommand(sql, _Connect);
+            var sql = String.Format(_resource.GetString("GetType_sql")!, _indexTableName);
+            using var command = new SQLiteCommand(sql, _connect);
             command.Parameters.AddWithValue("@A_DATABASE", db);
             command.Parameters.AddWithValue("@A_KEY", key); 
             return (MapDBType)command.ExecuteScalar().ToInt();
@@ -250,11 +242,11 @@ namespace CSharp_Myrtle.Citrus
 
         public void Dispose()
         {
-            if (this._Disposed)
+            if (this._disposed)
             {
-                this._Connect.Close();
-                this._Connect.Dispose();
-                _Disposed = false;
+                this._connect.Close();
+                this._connect.Dispose();
+                _disposed = false;
             }
         }
     }
