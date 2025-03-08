@@ -6,7 +6,7 @@ namespace CSharp_Myrtle
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("{0}Hello{1}", Ansi.ANSI_RED, Ansi.ANSI_RESET);
+            Console.WriteLine(Env.cr.GetString("ProjectName"));
         }
     }
 }

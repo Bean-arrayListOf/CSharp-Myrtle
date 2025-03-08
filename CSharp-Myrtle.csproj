@@ -6,9 +6,32 @@
     <RootNamespace>CSharp_Myrtle</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>Myrtle.Citrus</PackageId>
+    <Title>Myrtle.Citrus</Title>
+    <Authors>CitrusCat</Authors>
+    <PackageIcon>1a179a76d3430b8c697fcec38f722b42.jpg</PackageIcon>
+    <RepositoryUrl>https://github.com/Bean-arrayListOf/CSharp-Myrtle</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackAsTool>False</PackAsTool>
+    <NeutralLanguage>zh-CHS</NeutralLanguage>
+    <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+    <FileVersion>$(VersionPrefix)</FileVersion>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\..\Pictures\1a179a76d3430b8c697fcec38f722b42.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
   </ItemGroup>
 
@@ -34,6 +57,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MasterResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
