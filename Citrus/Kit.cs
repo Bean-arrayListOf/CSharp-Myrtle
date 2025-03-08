@@ -5,18 +5,39 @@ using System.Text;
 
 namespace CSharp_Myrtle.Citrus;
 
+/**
+ *  工具
+ */
 public static class Kit
 {
+    /**
+     * 系统类型
+     */
     public static readonly OSType Platform = getOSType();
 
+    /**
+     * 拓展打印
+     */
     public static void Out(this object? any) => Console.Write(any);
 
+    /**
+   * 拓展打印
+   */
     public static void OutLine(this object? any) => Console.WriteLine(any);
 
+    /**
+   * 拓展打印
+   */
     public static void Write(this object? any) => Console.Write(any);
 
+    /**
+   * 拓展打印
+   */
     public static void WriteLine(this object? any) => Console.WriteLine(any);
 
+    /**
+     * 创建读取流
+     */
     public static TextReader ReaderOf(string file)
     {
         if (!File.Exists(file))
@@ -32,11 +53,15 @@ public static class Kit
         return new StreamReader(File.OpenRead(file));
     }
 
-    public static String ReadText(this Stream stream)
-    {
-        return stream.ReadAllByte().EncString();
-    }
+    /**
+     * 读取内容
+     */
+    public static String ReadText(this Stream stream) => stream.ReadAllByte().EncString();
 
+    /**
+     * 读取内容
+     *
+     */
     public static List<string> ReadLines(this Stream stream)
     {
         var lines = new List<String>();
@@ -49,20 +74,21 @@ public static class Kit
         return lines;
     }
 
+    /**
+     * 读取所有byte
+     */
     public static byte[] ReadAllByte(this Stream stream)
     {
-        using (var baos = new MemoryStream())
+        using var baos = new MemoryStream();
+        var bytes = new byte[1024];
+        var n = 0;
+        while ((n = stream.Read(bytes)) > 0)
         {
-            var bytes = new byte[1024];
-            var n = 0;
-            while ((n = stream.Read(bytes)) > 0)
-            {
-                baos.Write(bytes, 0, n);
-            }
-
-            baos.Flush();
-            return baos.ToArray();
+            baos.Write(bytes, 0, n);
         }
+
+        baos.Flush();
+        return baos.ToArray();
     }
 
     public static byte[] EncBytes(this string hex) => Encoding.Default.GetBytes(hex);
@@ -119,8 +145,8 @@ public static class Kit
         throw new Exception("未知系统");
     }
 
-    public static ResourceManager GetResource(this Type baseType, string baseName)
-    {
-        return new ResourceManager(baseName, baseType.Assembly);
-    }
+    public static ResourceManager GetResource(this Type baseType, string baseName) =>
+        new ResourceManager(baseName, baseType.Assembly);
+
+    public static string? Input() => Console.ReadLine();
 }
