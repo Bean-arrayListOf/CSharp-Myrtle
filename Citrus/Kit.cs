@@ -162,4 +162,6 @@ public static class Kit
 
         return list;
     }
+
+    public static string GetUUIDv3() => Guid.NewGuid().ToString();
 }
