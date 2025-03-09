@@ -149,4 +149,17 @@ public static class Kit
         new ResourceManager(baseName, baseType.Assembly);
 
     public static string? Input() => Console.ReadLine();
+
+    public static string HexString(this byte[] data) => String.Join("", data.HexsString());
+
+    public static List<String> HexsString(this byte[] data)
+    {
+        var list = new List<String>();
+        foreach (var b in data)
+        {
+            list.Add(b.ToString("X2"));
+        }
+
+        return list;
+    }
 }
