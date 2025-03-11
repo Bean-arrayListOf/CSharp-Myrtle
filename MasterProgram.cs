@@ -1,21 +1,12 @@
-﻿using System.Diagnostics;
-using System.Text;
-
-using CSharp_Myrtle.Citrus;
+﻿using System.Runtime.InteropServices;
 
 namespace CSharp_Myrtle
 {
-    internal class MasterProgram
-    {
-        static void Main(string[] args)
-        {
-            using var cab = new CacheAllocatorBuilder();
+	internal class MasterProgram
+	{
+		static void Main(string[] args)
+		{
+		}
 
-            cab.CreateFile("1.1");
-
-            cab.GetRoot().OutLine();
-
-            cab.GetKeys().OutLine();
-;        }
-    }
+	}
 }

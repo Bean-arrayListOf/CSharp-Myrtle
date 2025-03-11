@@ -117,8 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ProjectName" xml:space="preserve">
-    <value>CSharp-Myrtle</value>
-    <comment>项目名称</comment>
+  <data name="Citrus_CacheAllocatorBuilder_mapFileName" xml:space="preserve">
+    <value>MAINIFEST.CA.MAP</value>
+  </data>
+  <data name="Citrus_Kit_HexsString_1" xml:space="preserve">
+    <value>X2</value>
   </data>
 </root>

@@ -10,7 +10,7 @@
     <PackageId>Myrtle.Citrus</PackageId>
     <Title>Myrtle.Citrus</Title>
     <Authors>CitrusCat</Authors>
-    <PackageIcon>1a179a76d3430b8c697fcec38f722b42.jpg</PackageIcon>
+    <PackageIcon></PackageIcon>
     <RepositoryUrl>https://github.com/Bean-arrayListOf/CSharp-Myrtle</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackAsTool>False</PackAsTool>
@@ -21,42 +21,52 @@
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageProjectUrl>https://github.com/Bean-arrayListOf/CSharp-Myrtle</PackageProjectUrl>
+    <Company />
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <EnableSdkContainerDebugging>True</EnableSdkContainerDebugging>
+    <ContainerBaseImage>mcr.microsoft.com/dotnet/runtime:8.0-noble</ContainerBaseImage>
+    <IsPublishable>True</IsPublishable>
+    <EnableSdkContainerSupport>True</EnableSdkContainerSupport>
+    <DockerfileContext>.</DockerfileContext>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <PublishAot>False</PublishAot>
+    <SignAssembly>True</SignAssembly>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <AnalysisLevel>none</AnalysisLevel>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\Pictures\1a179a76d3430b8c697fcec38f722b42.jpg">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RocksDB" Version="9.10.0.55496" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Citrus\MapDBResource.Designer.cs">
+    <Compile Update="Properties\MapDB.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>MapDBResource.resx</DependentUpon>
+      <DependentUpon>MapDB.resx</DependentUpon>
     </Compile>
-    <Compile Update="MasterResource.Designer.cs">
+    <Compile Update="Properties\Master.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>MasterResource.resx</DependentUpon>
+      <DependentUpon>Master.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Citrus\MapDBResource.resx">
+    <EmbeddedResource Update="Properties\MapDB.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MapDBResource.Designer.cs</LastGenOutput>
+      <LastGenOutput>MapDB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="MasterResource.resx">
+    <EmbeddedResource Update="Properties\Master.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MasterResource.Designer.cs</LastGenOutput>
+      <LastGenOutput>Master.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

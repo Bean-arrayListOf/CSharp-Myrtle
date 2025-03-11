@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CSharp-Myrtle": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

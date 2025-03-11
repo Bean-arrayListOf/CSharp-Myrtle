@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSharp_Myrtle.Citrus {
+namespace CSharp_Myrtle.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace CSharp_Myrtle.Citrus {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class MapDBResource {
+    internal class MapDB {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MapDBResource() {
+        internal MapDB() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CSharp_Myrtle.Citrus {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSharp_Myrtle.Citrus.MapDBResource", typeof(MapDBResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSharp_Myrtle.Properties.MapDB", typeof(MapDB).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
