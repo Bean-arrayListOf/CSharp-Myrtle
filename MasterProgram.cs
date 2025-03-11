@@ -1,4 +1,7 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Drawing.Printing;
+using System.Runtime.InteropServices;
+
+using CSharp_Myrtle.Citrus;
 
 namespace CSharp_Myrtle
 {
@@ -6,6 +9,7 @@ namespace CSharp_Myrtle
 	{
 		static void Main(string[] args)
 		{
+			Console.WriteLine(HashMode.SHA512.RandomHashHex());
 		}
 
 	}

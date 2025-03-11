@@ -11,7 +11,7 @@ namespace CSharp_Myrtle.Citrus
 		private readonly string _indexTableDefaultBDB;
 		private readonly string _indexTableName;
 
-		private readonly ResourceManager _resource = Properties.MapDB.ResourceManager;
+		private readonly ResourceManager _resource = Env.cr;
 
 		public MapDB(string baseFile)
 		{

@@ -61,6 +61,24 @@ namespace CSharp_Myrtle.Properties {
         }
         
         /// <summary>
+        ///   查找类似 master 的本地化字符串。
+        /// </summary>
+        internal static string _IndexTableDefaultBDB {
+            get {
+                return ResourceManager.GetString("_IndexTableDefaultBDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MDB-MANIFEST 的本地化字符串。
+        /// </summary>
+        internal static string _IndexTableName {
+            get {
+                return ResourceManager.GetString("_IndexTableName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 MAINIFEST.CA.MAP 的本地化字符串。
         /// </summary>
         internal static string Citrus_CacheAllocatorBuilder_mapFileName {
@@ -70,11 +88,128 @@ namespace CSharp_Myrtle.Properties {
         }
         
         /// <summary>
-        ///   查找类似 X2 的本地化字符串。
+        ///   查找类似 x2 的本地化字符串。
         /// </summary>
         internal static string Citrus_Kit_HexsString_1 {
             get {
                 return ResourceManager.GetString("Citrus_Kit_HexsString_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 select count(&quot;a_index&quot;) from &quot;{0}&quot; where &quot;a_database&quot; = @A_DATABASE and &quot;a_key&quot; = @A_KEY; 的本地化字符串。
+        /// </summary>
+        internal static string ContainsIndexTable_sql {
+            get {
+                return ResourceManager.GetString("ContainsIndexTable_sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 select * from &quot;{0}&quot;; 的本地化字符串。
+        /// </summary>
+        internal static string Get_sql {
+            get {
+                return ResourceManager.GetString("Get_sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 select &quot;a_data_table&quot; from &quot;{0}&quot; where &quot;a_database&quot; = @A_DATABASE and &quot;a_key&quot; = @A_KEY; 的本地化字符串。
+        /// </summary>
+        internal static string GetDataTable_sql {
+            get {
+                return ResourceManager.GetString("GetDataTable_sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 select &quot;a_data_type&quot; from &quot;{0}&quot; where &quot;a_database&quot; = @A_DATABASE and &quot;a_key&quot; = @A_KEY; 的本地化字符串。
+        /// </summary>
+        internal static string GetType_sql {
+            get {
+                return ResourceManager.GetString("GetType_sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 insert into &quot;{0}&quot;(&quot;b_data&quot;) values (@B_DATA); 的本地化字符串。
+        /// </summary>
+        internal static string InsertDataType_sql {
+            get {
+                return ResourceManager.GetString("InsertDataType_sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 insert into &quot;{0}&quot;(&quot;a_database&quot;,&quot;a_key&quot;, &quot;a_data_table&quot;, &quot;a_data_type&quot;) values (@A_DATABASE,@A_KEY,@A_DATA_TABLE,@A_DATA_TYPE); 的本地化字符串。
+        /// </summary>
+        internal static string InsertIndexTable_sql {
+            get {
+                return ResourceManager.GetString("InsertIndexTable_sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 create table if not exists &quot;{0}&quot;(&quot;b_index&quot; integer not null unique primary key autoincrement ,&quot;b_data&quot; blob); 的本地化字符串。
+        /// </summary>
+        internal static string NeoDataTable_sql {
+            get {
+                return ResourceManager.GetString("NeoDataTable_sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 create table if not exists &quot;{0}&quot;(&quot;a_index&quot; integer not null unique primary key autoincrement,&quot;a_database&quot; varchar(500) not null default &apos;master&apos;,&quot;a_key&quot; varchar(500) not null,&quot;a_data_table&quot; varchar(50) not null ,&quot;a_data_type&quot; int not null default &apos;1&apos;,&quot;a_time&quot; timestamp default current_timestamp); 的本地化字符串。
+        /// </summary>
+        internal static string NeoIndexTable_sql {
+            get {
+                return ResourceManager.GetString("NeoIndexTable_sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 1024 的本地化字符串。
+        /// </summary>
+        internal static string RandomByteLength {
+            get {
+                return ResourceManager.GetString("RandomByteLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 drop table &quot;{0}&quot;; 的本地化字符串。
+        /// </summary>
+        internal static string RemoveDataTable_sql {
+            get {
+                return ResourceManager.GetString("RemoveDataTable_sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 delete from &quot;{0}&quot; where &quot;a_database&quot; = @A_DATABASE and &quot;a_key&quot; = @A_KEY; 的本地化字符串。
+        /// </summary>
+        internal static string RemoveIndex_sql {
+            get {
+                return ResourceManager.GetString("RemoveIndex_sql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 1 的本地化字符串。
+        /// </summary>
+        internal static string sha {
+            get {
+                return ResourceManager.GetString("sha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 update &quot;{0}&quot; set &quot;a_data_table&quot; = @A_DATA_TABLE where &quot;a_database&quot; = @A_DATABASE and &quot;a_key&quot; = @A_KEY; 的本地化字符串。
+        /// </summary>
+        internal static string UpdateIndexDataTable_sql {
+            get {
+                return ResourceManager.GetString("UpdateIndexDataTable_sql", resourceCulture);
             }
         }
     }

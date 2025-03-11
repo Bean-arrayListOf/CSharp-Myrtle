@@ -47,11 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\MapDB.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>MapDB.resx</DependentUpon>
-    </Compile>
     <Compile Update="Properties\Master.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -60,10 +55,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\MapDB.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MapDB.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Update="Properties\Master.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Master.Designer.cs</LastGenOutput>

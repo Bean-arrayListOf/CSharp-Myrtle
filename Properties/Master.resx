@@ -119,8 +119,61 @@
   </resheader>
   <data name="Citrus_CacheAllocatorBuilder_mapFileName" xml:space="preserve">
     <value>MAINIFEST.CA.MAP</value>
+    <comment>CacheAllocatorBuilder类Map(索引表)默认文件名</comment>
   </data>
   <data name="Citrus_Kit_HexsString_1" xml:space="preserve">
-    <value>X2</value>
+    <value>x2</value>
+    <comment>Kit类byte[]转string默认格式</comment>
+  </data>
+  <data name="ContainsIndexTable_sql" xml:space="preserve">
+    <value>select count("a_index") from "{0}" where "a_database" = @A_DATABASE and "a_key" = @A_KEY;</value>
+    <comment>查询抽象层索引表中的数据库,键是否存在</comment>
+  </data>
+  <data name="GetDataTable_sql" xml:space="preserve">
+    <value>select "a_data_table" from "{0}" where "a_database" = @A_DATABASE and "a_key" = @A_KEY;</value>
+  </data>
+  <data name="GetType_sql" xml:space="preserve">
+    <value>select "a_data_type" from "{0}" where "a_database" = @A_DATABASE and "a_key" = @A_KEY;</value>
+  </data>
+  <data name="Get_sql" xml:space="preserve">
+    <value>select * from "{0}";</value>
+    <comment>查询所有</comment>
+  </data>
+  <data name="InsertDataType_sql" xml:space="preserve">
+    <value>insert into "{0}"("b_data") values (@B_DATA);</value>
+  </data>
+  <data name="InsertIndexTable_sql" xml:space="preserve">
+    <value>insert into "{0}"("a_database","a_key", "a_data_table", "a_data_type") values (@A_DATABASE,@A_KEY,@A_DATA_TABLE,@A_DATA_TYPE);</value>
+  </data>
+  <data name="NeoDataTable_sql" xml:space="preserve">
+    <value>create table if not exists "{0}"("b_index" integer not null unique primary key autoincrement ,"b_data" blob);</value>
+  </data>
+  <data name="NeoIndexTable_sql" xml:space="preserve">
+    <value>create table if not exists "{0}"("a_index" integer not null unique primary key autoincrement,"a_database" varchar(500) not null default 'master',"a_key" varchar(500) not null,"a_data_table" varchar(50) not null ,"a_data_type" int not null default '1',"a_time" timestamp default current_timestamp);</value>
+  </data>
+  <data name="RandomByteLength" xml:space="preserve">
+    <value>1024</value>
+    <comment>随机byte[]默认长度</comment>
+  </data>
+  <data name="RemoveDataTable_sql" xml:space="preserve">
+    <value>drop table "{0}";</value>
+  </data>
+  <data name="RemoveIndex_sql" xml:space="preserve">
+    <value>delete from "{0}" where "a_database" = @A_DATABASE and "a_key" = @A_KEY;</value>
+  </data>
+  <data name="sha" xml:space="preserve">
+    <value>1</value>
+    <comment>默认sha类型(0=SHA1, 1=SHA256, 2=SHA384, 3=SHA3_256, 4=SHA3_384, 5=SHA3_512, 6=SHA512)</comment>
+  </data>
+  <data name="UpdateIndexDataTable_sql" xml:space="preserve">
+    <value>update "{0}" set "a_data_table" = @A_DATA_TABLE where "a_database" = @A_DATABASE and "a_key" = @A_KEY;</value>
+  </data>
+  <data name="_IndexTableDefaultBDB" xml:space="preserve">
+    <value>master</value>
+    <comment>默认抽象层数据库</comment>
+  </data>
+  <data name="_IndexTableName" xml:space="preserve">
+    <value>MDB-MANIFEST</value>
+    <comment>默认抽象层索引表</comment>
   </data>
 </root>

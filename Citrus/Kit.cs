@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace CSharp_Myrtle.Citrus;
@@ -10,6 +11,7 @@ namespace CSharp_Myrtle.Citrus;
  */
 public static class Kit
 {
+
 	/**
      * 系统类型
      */
@@ -34,6 +36,98 @@ public static class Kit
    * 拓展打印
    */
 	public static void WriteLine(this object? any) => Console.WriteLine(any);
+
+	public static int? InInt(string? title = null)
+	{
+		if (title != null)
+		{
+			Console.Write(title);
+		}
+		return Console.Read();
+	}
+
+	public static double? InDouble(string? title = null)
+	{
+		if (title != null)
+		{
+			Console.Write(title);
+		}
+		return Console.ReadLine()?.ToDouble();
+	}
+
+	public static string? InString(string? title = null)
+	{
+		if (title != null)
+		{
+			Console.Write(title);
+		}
+		return Console.ReadLine();
+	}
+
+	public static float? InFloat(string? title = null)
+	{
+		if (title != null)
+		{
+			Console.Write(title);
+		}
+		return Console.ReadLine()?.ToFloat();
+	}
+
+	public static short? InShoat(string? title = null)
+	{
+		if (title != null)
+		{
+			Console.Write(title);
+		}
+		return Console.ReadLine()?.ToShort();
+	}
+
+	public static bool? InBoolean(string? title = null)
+	{
+		if (title != null)
+		{
+			Console.Write(title);
+		}
+		return Console.ReadLine()?.ToBoolean();
+	}
+
+	public static long? InLong(string? title = null)
+	{
+		if (title != null)
+		{
+			Console.Write(title);
+		}
+		return Console.ReadLine()?.ToLong();
+	}
+
+	public static ushort? InUShort(string? title = null)
+	{
+		if (title != null)
+		{
+			Console.Write(title);
+		}
+		return Console.ReadLine()?.ToUShort();
+	}
+
+	public static uint? InUInt(string? title = null)
+	{
+		if (title != null)
+		{
+			Console.Write(title);
+		}
+		return Console.ReadLine()?.ToUInt();
+	}
+
+	public static ulong? InULong(string? title = null)
+	{
+		if (title != null)
+		{
+			Console.Write(title);
+		}
+		return Console.ReadLine()?.ToULong();
+	}
+
+
 
 	/**
      * 创建读取流
@@ -170,7 +264,7 @@ public static class Kit
 		return Activator.CreateInstance(type)!;
 	}
 
-	public static void NeoMethod(Type type,object instance, string method, params object?[]? args)
+	public static void NeoMethod(Type type, object instance, string method, params object?[]? args)
 	{
 		var info = type.GetMethod(method, FormatType(args));
 		info!.Invoke(instance, args);
@@ -187,7 +281,7 @@ public static class Kit
 
 		foreach (var arg in args)
 		{
-			if(arg == null)
+			if (arg == null)
 			{
 				type.Add(null);
 				continue;
@@ -196,4 +290,16 @@ public static class Kit
 		}
 		return type.ToArray()!;
 	}
+
+	public static byte[] RandomBytes(int? lenget = null)
+	{
+		var buffer = new byte[lenget ?? Env.randomByteLength];
+		using var kit = RandomNumberGenerator.Create();
+		kit.GetBytes(buffer);
+		return buffer;
+	}
+
+	public static byte[] RandomHash(this HashMode sha) => Hash.Get(sha, RandomBytes());
+
+	public static string RandomHashHex(this HashMode sha) => Hash.Get(sha, RandomBytes()).HexString();
 }
