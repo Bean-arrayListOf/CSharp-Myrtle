@@ -1,6 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -403,4 +405,365 @@ public static class Kit
 
         return width;
     }
+
+    public static bool FileExists([NotNullWhen(true)] this string file) => File.Exists(file);
+
+    public static FileStream FileCreate(this string file) => File.Create(file);
+
+    public static StreamWriter FileCreateText(this string file) => File.CreateText(file);
+
+    public static FileSystemInfo FileSystemInfo(this string file, string pathToTarget) =>
+        File.CreateSymbolicLink(file, pathToTarget);
+
+    public static void FileDelete(this string file) => File.Delete(file);
+
+    public static string FileReadAllText(this string file) => File.ReadAllText(file);
+
+    public static string FileReadAllText(this string file, Encoding enc) => File.ReadAllText(file, enc);
+
+    public static void FileCopy(this string sourceFileName, string destFileName) =>
+        File.Copy(sourceFileName, destFileName);
+
+    public static void FileCopy(this string sourceFileName, string destFileName, bool overwrite) =>
+        File.Copy(sourceFileName, destFileName, overwrite);
+
+    public static FileStream FileCreate(this string path, int bufferSize) => File.Create(path, bufferSize);
+
+    public static FileStream FileCreate(this string path, int bufferSize, FileOptions options) =>
+        File.Create(path, bufferSize, options);
+
+    public static FileStream FileOpen(this string path, FileStreamOptions options) => File.Open(path, options);
+
+    public static FileStream FileOpen(this string path, FileMode mode) => File.Open(path, mode);
+
+    public static FileStream FileOpen(this string path, FileMode mode, FileAccess access) =>
+        File.Open(path, mode, access);
+
+    public static FileStream FileOpen(this string path, FileMode mode, FileAccess access, FileShare share) =>
+        File.Open(path, mode, access, share);
+
+    public static void FileSetCreationTime(this string path, DateTime creationTime) =>
+        File.SetCreationTime(path, creationTime);
+
+    public static void FileSetCreationTimeUtc(this string path, DateTime creationTimeUtc) =>
+        File.SetCreationTimeUtc(path, creationTimeUtc);
+
+    public static DateTime FileGetCreationTime(this string path) => File.GetCreationTime(path);
+
+    public static DateTime FileGetCreationTimeUtc(this string path) => File.GetCreationTimeUtc(path);
+
+    public static void FileSetLastAccessTime(this string path, DateTime lastAccessTime) =>
+        File.SetLastAccessTime(path, lastAccessTime);
+
+    public static void FileSetLastAccessTimeUtc(this string path, DateTime lastAccessTimeUtc) =>
+        File.SetLastAccessTimeUtc(path, lastAccessTimeUtc);
+
+    public static DateTime FileGetLastAccessTime(this string path) => File.GetLastAccessTime(path);
+
+    public static DateTime FileGetLastAccessTimeUtc(this string path) => File.GetLastAccessTimeUtc(path);
+
+    public static void FileSetLastWriteTime(this string path, DateTime lastWriteTime) =>
+        File.SetLastWriteTime(path, lastWriteTime);
+
+    public static void FileSetLastWriteTimeUtc(this string path, DateTime lastWriteTimeUtc) =>
+        File.SetLastWriteTime(path, lastWriteTimeUtc);
+
+    public static DateTime FileGetLastWriteTime(this string path) => File.GetLastWriteTime(path);
+
+    public static DateTime FileGetLastWriteTimeUtc(this string path) => File.GetLastWriteTimeUtc(path);
+
+    public static FileAttributes FileGetAttributes(this string path) => File.GetAttributes(path);
+
+    public static void FileSetAttributes(this string path, FileAttributes fileAttributes) =>
+        File.SetAttributes(path, fileAttributes);
+
+    [UnsupportedOSPlatform("windows")]
+    public static UnixFileMode FileGetUnixFileMode(this string path) => File.GetUnixFileMode(path);
+
+    [UnsupportedOSPlatform("windows")]
+    public static void FileSetUnixFileMode(this string path, UnixFileMode mode) => File.SetUnixFileMode(path, mode);
+
+    public static FileStream FileOpenRead(this string path) => File.OpenRead(path);
+
+    public static FileStream FileOpenWrite(this string path) => File.OpenWrite(path);
+
+    public static void FileWriteAllText(this string path, string? contents) => File.WriteAllText(path, contents);
+
+    public static void FileWriteAllText(this string path, string? contents, Encoding encoding) =>
+        File.WriteAllText(path, contents, encoding);
+
+    public static byte[] FileReadAllBytes(this string path) => File.ReadAllBytes(path);
+
+    public static void FileWriteAllBytes(this string path, byte[] bytes) => File.WriteAllBytes(path, bytes);
+
+    public static string[] FileReadAllLines(this string path) => File.ReadAllLines(path);
+
+    public static string[] FileReadAllLines(this string path, Encoding encoding) => File.ReadAllLines(path, encoding);
+
+    public static IEnumerable<string> FileReadLines(this string path) => File.ReadLines(path);
+
+    public static IEnumerable<string> FileReadLines(this string path, Encoding encoding) =>
+        File.ReadLines(path, encoding);
+
+    public static IAsyncEnumerable<string> FileReadLinesAsync(this string path,
+        CancellationToken cancellationToken = default) => File.ReadLinesAsync(path, cancellationToken);
+
+    public static IAsyncEnumerable<string> FileReadLinesAsync(this string path, Encoding encoding,
+        CancellationToken cancellationToken = default) => File.ReadLinesAsync(path, encoding, cancellationToken);
+
+    public static void FileWriteAllLines(this string path, string[] contents) => File.WriteAllLines(path, contents);
+
+    public static void FileWriteAllLines(this string path, IEnumerable<string> contents) =>
+        File.WriteAllLines(path, contents);
+
+    public static void FileWriteAllLines(this string path, string[] contents, Encoding encoding) =>
+        File.WriteAllLines(path, contents, encoding);
+
+    public static void FileWriteAllLines(this string path, IEnumerable<string> contents, Encoding encoding) =>
+        File.WriteAllLines(path, contents, encoding);
+
+    public static void FileAppendAllText(this string path, string? contents) => File.AppendAllText(path, contents);
+
+    public static void FileAppendAllText(this string path, string? contents, Encoding encoding) =>
+        File.AppendAllText(path, contents, encoding);
+
+    public static void FileAppendAllLines(this string path, IEnumerable<string> contents) =>
+        File.AppendAllLines(path, contents);
+
+    public static void FileAppendAllLines(this string path, IEnumerable<string> contents, Encoding encoding) =>
+        File.AppendAllLines(path, contents, encoding);
+
+    public static void FileReplace(this string sourceFileName, string destinationFileName,
+        string? destinationBackupFileName) =>
+        File.Replace(sourceFileName, destinationFileName, destinationBackupFileName);
+
+    public static void FileReplace(this string sourceFileName, string destinationFileName,
+        string? destinationBackupFileName, bool ignoreMetadataErrors) => File.Replace(sourceFileName,
+        destinationFileName, destinationBackupFileName, ignoreMetadataErrors);
+
+    public static void FileMove(this string sourceFileName, string destFileName) =>
+        File.Move(sourceFileName, destFileName);
+
+    public static void FileMove(this string sourceFileName, string destFileName, bool overwrite) =>
+        File.Move(sourceFileName, destFileName, overwrite);
+
+    [SupportedOSPlatform("windows")]
+    public static void FileEncrypt(this string path) => File.Encrypt(path);
+
+    [SupportedOSPlatform("windows")]
+    public static void FileDecrypt(this string path) => File.Decrypt(path);
+
+    public static Task<string> FileReadAllTextAsync(this string path,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.ReadAllTextAsync(path, cancellationToken);
+
+    public static Task<string> FileReadAllTextAsync(this string path, Encoding encoding,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.ReadAllTextAsync(path, encoding, cancellationToken);
+
+    public static Task FileWriteAllTextAsync(this string path, string? contents,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.WriteAllTextAsync(path, contents, cancellationToken);
+
+    public static Task FileWriteAllTextAsync(this string path, string? contents, Encoding encoding,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.WriteAllTextAsync(path, contents, encoding, cancellationToken);
+
+    public static Task<byte[]> FileReadAllBytesAsync(this string path,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.ReadAllBytesAsync(path, cancellationToken);
+
+    public static Task FileWriteAllBytesAsync(this string path, byte[] bytes,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.ReadAllBytesAsync(path, cancellationToken);
+
+    public static Task<string[]> FileReadAllLinesAsync(this string path,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.ReadAllLinesAsync(path, cancellationToken);
+
+    public static Task<string[]> FileReadAllLinesAsync(this string path, Encoding encoding,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.ReadAllLinesAsync(path, encoding, cancellationToken);
+
+    public static Task FileWriteAllLinesAsync(this string path, IEnumerable<string> contents,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.WriteAllLinesAsync(path, contents, cancellationToken);
+
+    public static Task FileWriteAllLinesAsync(this string path, IEnumerable<string> contents, Encoding encoding,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.WriteAllLinesAsync(path, contents, encoding, cancellationToken);
+
+    public static Task FileAppendAllTextAsync(this string path, string? contents,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.AppendAllTextAsync(path, contents, cancellationToken);
+
+    public static Task FileAppendAllTextAsync(this string path, string? contents, Encoding encoding,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.AppendAllTextAsync(path, contents, encoding, cancellationToken);
+
+    public static Task FileAppendAllLinesAsync(this string path, IEnumerable<string> contents,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.AppendAllLinesAsync(path, contents, cancellationToken);
+
+    public static Task FileAppendAllLinesAsync(this string path, IEnumerable<string> contents, Encoding encoding,
+        CancellationToken cancellationToken = default(CancellationToken)) =>
+        File.AppendAllLinesAsync(path, contents, encoding, cancellationToken);
+
+    public static FileSystemInfo FileCreateSymbolicLink(this string path, string pathToTarget) =>
+        File.CreateSymbolicLink(path, pathToTarget);
+
+    public static FileSystemInfo? FileResolveLinkTarget(this string linkPath, bool returnFinalTarget) =>
+        File.ResolveLinkTarget(linkPath, returnFinalTarget);
+
+    public static DirectoryInfo? DirectoryGetParent(this string path) => Directory.GetParent(path);
+
+    public static DirectoryInfo DirectoryCreateDirectory(this string path) => Directory.CreateDirectory(path);
+
+    public static DirectoryInfo DirectoryCreateDirectory(this string path, UnixFileMode unixCreateMode) =>
+        Directory.CreateDirectory(path, unixCreateMode);
+
+    public static DirectoryInfo DirectoryCreateTempSubdirectory(this string? prefix) =>
+        Directory.CreateTempSubdirectory(prefix ?? null);
+
+    public static bool DirectoryExists([NotNullWhen(true)] this string? path) => Directory.Exists(path);
+
+    public static void DirectorySetCreationTime(this string path, DateTime creationTime) =>
+        Directory.SetCreationTime(path, creationTime);
+
+    public static void DirectorySetCreationTimeUtc(this string path, DateTime creationTimeUtc) =>
+        Directory.SetCreationTimeUtc(path, creationTimeUtc);
+
+    public static DateTime DirectoryGetCreationTime(this string path) => Directory.GetCreationTime(path);
+
+    public static DateTime DirectoryGetCreationTimeUtc(this string path) => Directory.GetCreationTimeUtc(path);
+
+    public static void DirectorySetLastWriteTime(this string path, DateTime lastWriteTime) =>
+        Directory.SetLastWriteTime(path, lastWriteTime);
+
+    public static void DirectorySetLastWriteTimeUtc(this string path, DateTime lastWriteTimeUtc) =>
+        Directory.SetLastWriteTimeUtc(path, lastWriteTimeUtc);
+
+    public static DateTime DirectoryGetLastWriteTime(this string path) => Directory.GetLastWriteTime(path);
+
+    public static DateTime DirectoryGetLastWriteTimeUtc(this string path) => Directory.GetLastWriteTimeUtc(path);
+
+    public static void DirectorySetLastAccessTime(this string path, DateTime lastAccessTime) =>
+        Directory.SetLastAccessTime(path, lastAccessTime);
+
+    public static void DirectorySetLastAccessTimeUtc(this string path, DateTime lastAccessTimeUtc) =>
+        Directory.SetLastAccessTimeUtc(path, lastAccessTimeUtc);
+
+    public static DateTime DirectoryGetLastAccessTime(this string path) => Directory.GetLastAccessTime(path);
+
+    public static DateTime DirectoryGetLastAccessTimeUtc(this string path) => Directory.GetLastAccessTimeUtc(path);
+
+    public static string[] DirectoryGetFiles(this string path) => Directory.GetFiles(path);
+
+    public static string[] DirectoryGetFiles(this string path, string searchPattern) =>
+        Directory.GetFiles(path, searchPattern);
+
+    public static string[] DirectoryGetFiles(this string path, string searchPattern, SearchOption searchOption) =>
+        Directory.GetFiles(path, searchPattern, searchOption);
+
+    public static string[] DirectoryGetFiles(
+        this string path,
+        string searchPattern,
+        EnumerationOptions enumerationOptions) => Directory.GetFiles(path, searchPattern, enumerationOptions);
+
+    public static string[] DirectoryGetDirectories(this string path) => Directory.GetDirectories(path);
+
+    public static string[] DirectoryGetDirectories(this string path, string searchPattern) =>
+        Directory.GetDirectories(path, searchPattern);
+
+    public static string[] DirectoryGetDirectories(
+        this string path,
+        string searchPattern,
+        SearchOption searchOption) => Directory.GetDirectories(path, searchPattern, searchOption);
+
+    public static string[] DirectoryGetDirectories(
+        this string path,
+        string searchPattern,
+        EnumerationOptions enumerationOptions) => Directory.GetDirectories(path, searchPattern, enumerationOptions);
+
+    public static string[] DirectoryGetFileSystemEntries(this string path) => Directory.GetFileSystemEntries(path);
+
+    public static string[] DirectoryGetFileSystemEntries(this string path, string searchPattern) =>
+        Directory.GetFileSystemEntries(path, searchPattern);
+
+    public static string[] DirectoryGetFileSystemEntries(
+        this string path,
+        string searchPattern,
+        SearchOption searchOption) => Directory.GetFileSystemEntries(path, searchPattern, searchOption);
+
+    public static string[] DirectoryGetFileSystemEntries(
+        this string path,
+        string searchPattern,
+        EnumerationOptions enumerationOptions) =>
+        Directory.GetFileSystemEntries(path, searchPattern, enumerationOptions);
+
+    public static IEnumerable<string> DirectoryEnumerateDirectories(this string path) =>
+        Directory.EnumerateDirectories(path);
+
+    public static IEnumerable<string> DirectoryEnumerateDirectories(this string path, string searchPattern) =>
+        Directory.EnumerateDirectories(path, searchPattern);
+
+    public static IEnumerable<string> DirectoryEnumerateDirectories(
+        this string path,
+        string searchPattern,
+        SearchOption searchOption) => Directory.EnumerateDirectories(path, searchPattern, searchOption);
+
+    public static IEnumerable<string> DirectoryEnumerateDirectories(
+        this string path,
+        string searchPattern,
+        EnumerationOptions enumerationOptions) =>
+        Directory.EnumerateDirectories(path, searchPattern, enumerationOptions);
+
+    public static IEnumerable<string> DirectoryEnumerateFiles(this string path) => Directory.EnumerateFiles(path);
+
+    public static IEnumerable<string> DirectoryEnumerateFiles(this string path, string searchPattern) =>
+        Directory.EnumerateFiles(path, searchPattern);
+
+    public static IEnumerable<string> DirectoryEnumerateFiles(
+        this string path,
+        string searchPattern,
+        SearchOption searchOption) => Directory.EnumerateFiles(path, searchPattern, searchOption);
+
+    public static IEnumerable<string> DirectoryEnumerateFiles(
+        this string path,
+        string searchPattern,
+        EnumerationOptions enumerationOptions) => Directory.EnumerateFiles(path, searchPattern, enumerationOptions);
+
+    public static IEnumerable<string> DirectoryEnumerateFileSystemEntries(this string path) =>
+        Directory.EnumerateFileSystemEntries(path);
+
+    public static IEnumerable<string> DirectoryEnumerateFileSystemEntries(this string path, string searchPattern) =>
+        Directory.EnumerateFileSystemEntries(path, searchPattern);
+
+    public static IEnumerable<string> DirectoryEnumerateFileSystemEntries(
+        this string path,
+        string searchPattern,
+        SearchOption searchOption) => Directory.EnumerateFileSystemEntries(path, searchPattern, searchOption);
+
+    public static IEnumerable<string> DirectoryEnumerateFileSystemEntries(
+        this string path,
+        string searchPattern,
+        EnumerationOptions enumerationOptions) =>
+        Directory.EnumerateFileSystemEntries(path, searchPattern, enumerationOptions);
+
+    public static string DirectoryGetDirectoryRoot(this string path) => Directory.GetDirectoryRoot(path);
+
+    public static void DirectorySetCurrentDirectory(this string path) => Directory.SetCurrentDirectory(path);
+
+    public static void DirectoryMove(this string sourceDirName, string destDirName) =>
+        Directory.Move(sourceDirName, destDirName);
+
+    public static void DirectoryDelete(this string path) => Directory.Delete(path);
+
+    public static void DirectoryDelete(this string path, bool recursive) => Directory.Delete(path, recursive);
+
+    public static FileSystemInfo DirectoryCreateSymbolicLink(this string path, string pathToTarget) =>
+        Directory.CreateSymbolicLink(path, pathToTarget);
+
+    public static FileSystemInfo? DirectoryResolveLinkTarget(this string linkPath, bool returnFinalTarget) =>
+        Directory.ResolveLinkTarget(linkPath, returnFinalTarget);
 }
