@@ -6,9 +6,12 @@ namespace CSharp_Myrtle
     {
         static void Main(string[] args)
         {
-            Kit.PrintTable(["1", "2", "3"], [["我", "m1.1", "m1.2"], ["m2", "我", "m2.2"], ["m3", "m3.1", "我"]])
-                .OutLine();
-            // 7
+            var start = Kit.TimeSeconds();
+
+
+            var end = Kit.TimeSeconds();
+
+            Console.WriteLine("{0}MS", (end - start));
         }
     }
 }
