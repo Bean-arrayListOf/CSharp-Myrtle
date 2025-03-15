@@ -1,4 +1,4 @@
-﻿namespace CSharp_Myrtle
+namespace CSharp_Myrtle
 {
     internal class MasterProgram
     {
