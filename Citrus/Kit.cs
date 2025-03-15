@@ -764,6 +764,4 @@ public static class Kit
 	public static FileSystemInfo DirectoryCreateSymbolicLink(this string path, string pathToTarget) =>
 		Directory.CreateSymbolicLink(path, pathToTarget);
 
-	public static FileSystemInfo? DirectoryResolveLinkTarget(this string linkPath, bool returnFinalTarget) =>
-		Directory.ResolveLinkTarget(linkPath, returnFinalTarget);
 }
