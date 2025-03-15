@@ -2,16 +2,16 @@
 
 namespace CSharp_Myrtle
 {
-    internal class MasterProgram
-    {
-        static void Main(string[] args)
-        {
-            var start = Kit.TimeSeconds();
+	internal class MasterProgram
+	{
+		static void Main(string[] args)
+		{
+			var start = Kit.TimeSeconds();
 
 
-            var end = Kit.TimeSeconds();
+			var end = Kit.TimeSeconds();
 
-            Console.WriteLine("{0}MS", (end - start));
-        }
-    }
+			Console.WriteLine("{0}MS", (end - start));
+		}
+	}
 }
