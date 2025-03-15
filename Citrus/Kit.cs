@@ -766,4 +766,8 @@ public static class Kit
 
     public static FileSystemInfo? DirectoryResolveLinkTarget(this string linkPath, bool returnFinalTarget) =>
         Directory.ResolveLinkTarget(linkPath, returnFinalTarget);
+
+    public static long TimeMilliseconds() => DateTimeOffset.Now.ToUnixTimeMilliseconds();
+
+    public static long TimeSeconds() => DateTimeOffset.Now.ToUnixTimeSeconds();
 }
