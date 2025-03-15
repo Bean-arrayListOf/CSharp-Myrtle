@@ -2,5 +2,8 @@ namespace CSharp_Myrtle.Citrus;
 
 public enum OSType
 {
-	Windows, MacOS, Linux, FreeBSD
+    MacOS = 0,
+    Linux = 1,
+    Windows = 2,
+    FreeBSD = 3
 }

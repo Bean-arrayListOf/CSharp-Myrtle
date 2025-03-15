@@ -10,8 +10,5 @@ public static class Env
     public readonly static HashMode sha = (HashMode)cr.GetString("sha")!.ToInt();
     public readonly static int randomByteLength = cr.GetString("RandomByteLength")!.ToInt();
 
-    public static string? Get(string key)
-    {
-        return Environment.GetEnvironmentVariable(key);
-    }
+    public static string? Get(string key) => Environment.GetEnvironmentVariable(key);
 }
