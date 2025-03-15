@@ -1,9 +1,9 @@
-﻿namespace CSharp_Myrtle
+namespace CSharp_Myrtle
 {
-    internal class MasterProgram
-    {
-        static void Main(string[] args)
-        {
-        }
-    }
+	internal class MasterProgram
+	{
+		static void Main(string[] args)
+		{
+		}
+	}
 }
