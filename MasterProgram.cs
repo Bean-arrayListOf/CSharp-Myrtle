@@ -1,6 +1,6 @@
 namespace CSharp_Myrtle
 {
-    internal class MasterProgram
+    internal static class MasterProgram
     {
         static void Main(string[] args)
         {
